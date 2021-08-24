@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="06.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel"> /* Utilizando a biblioteca babel */
+
+        /*
+            Em react, estilos css são especificados por meio de objetos, onde o nome propriedade corresponde ao nome da propriedada css mas:
+                -Não são usados hifens no nome das propriedades, mas sim comelCase. por exemplo, background-color (css) torna-se backgroundcolor, font-style vira fontstyle, etc.
+                -todos os valores de propriedades não numéricos devem ser especificados entre aspas.
+        */
+        const smallStyle = {
+            backgroundColor: 'lightblue',
+            fontStyle: 'italic',
+            marginBottom: '20px'
+        }
+    
+        const smallbox = <div className="box small" style={smallStyle}>Small box</div>
+
+        const smallbox2 = <div className="box small">Small box 2</div>
+
+        /*
+        
+            Para usar estilos "inline" em um componente React, deve-se usar chaves dentro de chaves.
+            - As chaves externas com o conteúdo deve ser processado, como se fosse uma variável
+            - A chaves internas delimitam o objeto que contém as propriedades de estilo.
+        
+        */
+        const mediumBox = <div className="box medium" style={ 
+            { backgroundColor: 'pink', fontweight: 'bold', margin: '30px 0px' }
+         }> Medium Box</div>
+    
+        const largeBox = <div className="box large" style={
+            { backgroundColor: 'orange', fontVariant: 'small-caps' }
+        }> Large Box</div>
+
+        //Criando um componente personalizado
+        const CustomBox = ({style, size, ...props}) =>
+            <div className={`box box--${size}`} style={{fontStyle: 'italic', ...style}} {...props} />
+
+        const container =
+        <>
+            {smallbox}
+            {smallbox2}
+            {mediumBox}
+            {largeBox}
+            <CustomBox style={{ backgroundColor: 'limegreen', color: 'navy'}} size="medium">Custom Box 1</CustomBox>
+        </>
+
+        ReactDOM.render(container, document.getElementById('root'))
+    </script>
+</body>
+</html>
