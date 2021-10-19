@@ -1,51 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
+  
+  <div id="root" style="border: 1px solid red">
+    <p>Parágrafo criado em HTML.</p>
+  </div>
     
-    <div id="root" style="border: 1px solid black">
-        <p>Parágrafo criado em HTML.</p>
-    </div>
-        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script>
 
-        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    
+    // Capturar a div "root" em uma constante
+    const root = document.getElementById('root')
 
-    <script>
-        const root = document.getElementById('root')
+    // Criando um novo parágrafo
+    const novoParag = document.createElement('p')
 
-        let props = {
-            style: {border: '2px solid blue', backgroundColor: 'aliceblue'},
-            id: 'div1',
-            children: 'Minha primeira div feita com React'
-        }
+    // Colocar o conteúdo no parágrafo
+    novoParag.textContent = 'Parágrafo criado com JavaScript.'
 
-        const novaDiv = react.createElement('div', props)
+    // Colocando o novo parágrafo dentro da div "root"
+    root.appendChild(novoParag)
 
-        ReactDOM.render(novaDiv, root)
+    // Criando uma div nova
+    const novaDiv = document.createElement('div')
 
-        //criando um novo paragrafo
-        const novoParag = document.createElement('p')
+    // Ajustando propriedades da div
+    novaDiv.textContent = 'Div criada com JavaScript.'
+    novaDiv.style.border = '3px dotted green'
+    novaDiv.style.backgroundColor = 'limegreen'
+    novaDiv.id = 'minhaDiv'
 
-        novoParag.textContent = 'Parágrafo criado com Javascript'
+    // Colocando a nova div diretamente do body do documento
+    document.body.appendChild(novaDiv)
 
-        root.appendChild(novoParag)
-
-        const novaDiv = document.createElement('div')
-
-        novaDiv.textContent = 'Div criada com javascript'
-        novaDiv.style.border = '3px dotted green'
-        novaDiv.style.backgroundColor = 'limegreen'
-        novaDiv.id = 'minhaDiv'
-
-        document.body.appendChild(novaDiv)
-
-    </script>
+  </script>
 
 </body>
 </html>

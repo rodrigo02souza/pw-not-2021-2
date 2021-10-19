@@ -26,3 +26,4 @@ console.log(infoUsuario)
 console.log({password})
 console.log({grupo})
 console.log({password, grupo})
+
