@@ -34,28 +34,29 @@
 
   <script type="text/babel">
 
-    //const FormSoma = () => {
+    // iniciando o componente de classe
     class FormSoma extends React.Component {
-/*
-        const [num1, setNum1] = React.useState(0)
-        const [num2, setNum2] = React.useState(0)
-        const [soma, setSoma] = React.useState(0)
-*/
+        // constructor
         constructor(props){
           super(props)
+          // Atribuir o num1 e o num2 no this.state
           this.state = {
             num1: 0,
             num2: 0
           }
+          // usada para vincular a função handleChange()
           this.handleChange = this.handleChange.bind(this);
         }
         
-
+        // inicando a função handleChange()
         handleChange(event){
+          // condição que vai identificar o campo e atribuir valor ao num1 ou num2
           if(event.target.id === 'num1') {
+            // acesso o state e atribui o valor na variável chamada no caso o num1
             this.setState({num1: Number(event.target.value.toUpperCase())});
           }
           else if(event.target.id === 'num2') {
+            // acesso o state e atribui o valor na variável chamada no caso o num1
             this.setState({num2: Number(event.target.value.toUpperCase())});
           }
           
@@ -63,24 +64,24 @@
 
         
         
-
+        // renderizando o html
         render() {        
           return (
               <form>
                   <div>
                       <label htmlFor="num1">Primeiro número:</label><br />
-                      <input id="num1" type="number" value={this.state.num1} onChange={this.handleChange} />
+                      <input id="num1" type="number" value={this.state.num1} onChange={this.handleChange}/*chama a função handleChange para verificar qual campo o chamou*/ />
                   </div>
                   <div>
                       <label htmlFor="num2">Segundo número:</label><br />
-                      <input id="num2" type="number" value={this.state.num2} onChange={this.handleChange} />
+                      <input id="num2" type="number" value={this.state.num2} onChange={this.handleChange} /*chama a função handleChange para verificar qual campo o chamou*/ />
                   </div>
-                  <div id="soma">Soma: {this.state.num1 + this.state.num2}</div>
+                  <div id="soma">Soma: {this.state.num1 + this.state.num2 /*aqui eu busco direto os valores atribuidos as variáveis dentro do state e já faço a soma deles, mostrando o resultado diretamente no campo*/}</div>
               </form>
           )
       }
     }
-
+    // renderiza a classe do react no DOM na div root
     ReactDOM.render(<FormSoma />, document.getElementById('root'))
 
 
